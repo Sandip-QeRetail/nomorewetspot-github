@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashPlugin = require('lodash-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
-
+ 
 // Common configuration, with extensions in webpack.dev.js and webpack.prod.js.
 module.exports = {
     bail: true,
