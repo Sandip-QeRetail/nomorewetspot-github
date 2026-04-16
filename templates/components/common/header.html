@@ -1,0 +1,61 @@
+<a href="#main-content" class="skip-to-main-link">{{lang 'header.skip_to_main'}}</a>
+
+<script>
+	  $(document).ready(function(){
+		  $('body').on('click', 'button.modal-close',  function() {
+					$(".quickSearchResults").html("");
+		  });	
+	  });
+	</script>
+<header class="header" role="banner">
+<div class="navUser-item navUser-item-compare">
+            <a class="navUser-action navUser-item--compare"
+               href="{{urls.compare}}"
+               data-compare-nav
+               aria-label="{{lang 'common.compare'}}"
+            >
+                <img src="{{cdn '/assets/img/compare-icon.png'}}" alt="" title="" /> <span class="countPill countPill--positive countPill--alt"></span>
+            </a>
+        </div>
+
+<div class="announcment-bar marquee">
+<div class="marquee-line"> <strong>Valentines day sale!!</strong> Use the code VDAY for 20% off everything site wide. <span> | </span></div>
+<div class="marquee-line"> <strong>Valentines day sale!!</strong> Use the code VDAY for 20% off everything site wide. <span> | </span></div>
+<div class="marquee-line"> <strong>Valentines day sale!!</strong> Use the code VDAY for 20% off everything site wide. <span> | </span></div>
+<div class="marquee-line"> <strong>Valentines day sale!!</strong> Use the code VDAY for 20% off everything site wide. <span> | </span></div>
+<div class="marquee-line"> <strong>Valentines day sale!!</strong> Use the code VDAY for 20% off everything site wide. <span> | </span></div>    
+</div> 
+
+
+
+    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+        <span class="mobileMenu-toggleIcon">Toggle menu</span>
+    </a>
+    
+    <div class="header-inner">
+    <div class="container">
+    
+    {{#if page_type '===' 'default'}}
+      <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+          {{> components/common/store-logo}}
+      </h1>
+    {{else}}
+      <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+          {{> components/common/store-logo}}
+      </div>
+    {{/if}}
+    
+    <div class="navPages-container" id="menu" data-menu>
+        {{> components/common/navigation-menu}}
+    </div>
+    
+    <div class="header-right">
+      {{> components/common/navigation}}
+    </div>
+    
+    </div>
+    </div>
+    {{{region name="header_navigation_bottom--global"}}}
+</header>
+{{{region name="header_bottom--global"}}}
+{{{region name="header_bottom"}}}

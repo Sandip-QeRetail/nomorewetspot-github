@@ -1,0 +1,116 @@
+<nav class="navUser">
+
+    {{#if theme_settings.show_channels}}
+        {{> components/common/channel-selector}}
+    {{/if}}
+
+    <ul class="navUser-section navUser-section--alt">
+        {{#if customer.store_credit.value '>' 0}}
+            <li class="navUser-item">
+                <a class="navUser-action navUser-action--storeCredit"
+                   data-dropdown="storeCredit-dropdown"
+                   data-options="align:bottom"
+                   href="{{urls.cart}}"
+                   aria-label="{{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}"
+                >
+                    <span class="navUser-action-divider">
+                        {{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}
+                    </span>
+                </a>
+                <div class="dropdown-menu" id="storeCredit-dropdown" data-dropdown-content aria-hidden="true">
+                    {{{lang 'common.store_credit' store_credit=customer.store_credit.formatted}}}
+                </div>
+            </li>
+        {{/if}}
+        <li class="navUser-item header-call">
+            <a class="navUser-action" href="tel:8553456697">
+               <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+  <path d="M16.2257 7.60575V3.26723C16.2257 2.97956 16.3399 2.70368 16.5433 2.50027C16.7467 2.29687 17.0226 2.18259 17.3102 2.18259C17.5979 2.18259 17.8737 2.29687 18.0771 2.50027C18.2805 2.70368 18.3948 2.97956 18.3948 3.26723V6.0992C19.078 5.41154 23.4933 0.973228 24.1353 0.331125C24.2354 0.227532 24.3551 0.144902 24.4874 0.0880578C24.6197 0.0312133 24.762 0.00129242 24.906 4.09522e-05C25.05 -0.00121051 25.1928 0.0262325 25.3261 0.0807688C25.4594 0.135305 25.5805 0.215842 25.6823 0.317681C25.7842 0.419521 25.8647 0.540622 25.9192 0.673919C25.9738 0.807217 26.0012 0.95004 26 1.09406C25.9987 1.23807 25.9688 1.3804 25.9119 1.51273C25.8551 1.64506 25.7725 1.76474 25.6689 1.8648C25.0268 2.5069 20.6344 6.92461 19.9555 7.60575H22.733C23.0206 7.60575 23.2965 7.72003 23.4999 7.92344C23.7033 8.12684 23.8176 8.40272 23.8176 8.69039C23.8176 8.97805 23.7033 9.25393 23.4999 9.45734C23.2965 9.66075 23.0206 9.77502 22.733 9.77502H18.3948C17.8195 9.77502 17.2678 9.54647 16.861 9.13966C16.4542 8.73284 16.2257 8.18108 16.2257 7.60575ZM25.0051 18.169C25.6337 18.7993 25.9866 19.6531 25.9866 20.5433C25.9866 21.4334 25.6337 22.2872 25.0051 22.9175L24.016 24.0564C15.1324 32.5577 -6.4806 10.9497 1.89109 2.03834L3.13833 0.953704C3.76915 0.342564 4.6152 0.00436789 5.49344 0.0122842C6.37168 0.0202005 7.2115 0.373592 7.8312 0.996005C7.86482 1.02854 9.87342 3.64034 9.87342 3.64034C10.4677 4.26784 10.7983 5.09958 10.7971 5.96384C10.7959 6.82809 10.4629 7.6589 9.86691 8.28474L8.611 9.86396C9.30619 11.5528 10.3281 13.0876 11.6181 14.3803C12.9081 15.673 14.4408 16.6981 16.1281 17.3967L17.7169 16.1331C18.3415 15.5355 19.1722 15.2014 20.0366 15.2002C20.901 15.199 21.7326 15.5308 22.3588 16.1266C22.3588 16.1266 24.9715 18.1365 25.0051 18.169V18.169ZM23.5139 19.746C23.5139 19.746 20.9185 17.7482 20.8849 17.7156C20.6615 17.4941 20.3596 17.3697 20.0449 17.3697C19.7303 17.3697 19.4284 17.4941 19.2049 17.7156C19.1757 17.7438 16.9881 19.4879 16.9881 19.4879C16.8407 19.6053 16.6653 19.6822 16.4791 19.7111C16.2929 19.74 16.1024 19.7199 15.9263 19.6528C13.7392 18.839 11.7527 17.5645 10.1013 15.9156C8.44989 14.2667 7.1723 12.282 6.35512 10.0961C6.28267 9.9176 6.25905 9.72305 6.28669 9.53243C6.31433 9.3418 6.39223 9.16198 6.51238 9.01144C6.51238 9.01144 8.25635 6.82699 8.28563 6.79879C8.50717 6.57534 8.63147 6.27341 8.63147 5.95874C8.63147 5.64407 8.50717 5.34214 8.28563 5.11869C8.25309 5.08615 6.25534 2.48846 6.25534 2.48846C6.02856 2.2851 5.73259 2.17619 5.42809 2.18405C5.1236 2.19192 4.83364 2.31596 4.61766 2.53076L3.37042 3.61539C-2.74864 10.9725 15.9838 28.6671 22.4293 22.578L23.4184 21.4381C23.6516 21.2241 23.7921 20.9275 23.8099 20.6115C23.8277 20.2954 23.7215 19.9849 23.5139 19.746V19.746Z" fill="white"/>
+</svg> </span>855-345-6697
+            </a>
+        </li>
+        {{#if theme_settings.social_icon_placement_top}}
+            <li class="navUser-item navUser-item--social">
+                {{> components/common/social-links}}
+            </li>
+            <li class="navUser-item navUser-item--divider">|</li>
+        {{/if}}
+        <li class="navUser-item">
+            <button class="navUser-action navUser-action--quickSearch"
+               type="button"
+               id="quick-search-expand"
+               data-search="quickSearch"
+               aria-controls="quickSearch"
+               aria-label="{{lang 'common.search'}}"
+            >
+                <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M10.375 6.25C9.8333 6.25 9.2969 6.3567 8.79643 6.564C8.29596 6.7713 7.84123 7.07514 7.45818 7.45818C7.07514 7.84123 6.7713 8.29596 6.564 8.79643C6.3567 9.2969 6.25 9.8333 6.25 10.375M22.75 22.75L18.625 18.625M20 10.375C20 15.6907 15.6907 20 10.375 20C5.05926 20 0.75 15.6907 0.75 10.375C0.75 5.05926 5.05926 0.75 10.375 0.75C15.6907 0.75 20 5.05926 20 10.375Z" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+</svg></span>
+            </button>
+        </li>
+        <li class="navUser-item">
+            <a class="navUser-action wishlistIc"
+               href="/wishlist.php"
+            >
+               <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+  <path d="M2.66688 11.5245L10.9638 19.4385C11.2905 19.7501 11.4538 19.9059 11.6541 19.9059C11.8543 19.9059 12.0176 19.7501 12.3443 19.4385L20.6412 11.5245C22.9249 9.34617 23.2032 5.79815 21.2871 3.29042L20.873 2.74853C18.5569 -0.282545 13.8521 0.220594 12.2294 3.67289C12.0004 4.15993 11.3077 4.15993 11.0787 3.67288C9.45601 0.220594 4.75117 -0.282541 2.43511 2.74853L2.02105 3.29042C0.104874 5.79815 0.383161 9.34617 2.66688 11.5245Z" stroke="black" stroke-width="1.5"/>
+</svg></span>
+            </a>
+        </li>
+        
+            {{#if customer}}
+            <li class="navUser-item navUser-item--account">
+                <a class="navUser-action"
+                   href="{{urls.account.index}}"
+                   aria-label="{{lang 'common.account'}}"
+                >
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.705 11.894C14.703 10.892 13.51 10.15 12.209 9.701C13.603 8.741 14.518 7.135 14.518 5.318C14.518 2.385 12.132 0 9.2 0C6.267 0 3.881 2.385 3.881 5.318C3.881 7.135 4.797 8.741 6.19 9.701C4.889 10.15 3.696 10.892 2.694 11.894C0.957 13.632 0 15.942 0 18.399H1.437C1.437 14.119 4.919 10.637 9.2 10.637C13.48 10.637 16.962 14.119 16.962 18.399H18.4C18.4 15.942 17.443 13.632 15.705 11.894ZM9.2 9.199C7.06 9.199 5.318 7.458 5.318 5.318C5.318 3.178 7.06 1.437 9.2 1.437C11.34 1.437 13.081 3.178 13.081 5.318C13.081 7.458 11.34 9.199 9.2 9.199Z" fill="black"/>
+</svg></span>
+                </a>
+                </li>
+                <li class="navUser-item navUser-item--logout">
+                <a class="navUser-action"
+                   href="{{urls.auth.logout}}"
+                   aria-label="{{lang 'common.logout'}}"
+                >
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="23" viewBox="0 0 18 23" fill="none">
+  <path d="M13.55 9.63462V5.59615C13.55 4.31087 13.0443 3.07824 12.1441 2.16941C11.2439 1.26058 10.023 0.75 8.75 0.75C7.47696 0.75 6.25606 1.26058 5.35589 2.16941C4.45571 3.07824 3.95 4.31087 3.95 5.59615V9.63462M3.15 21.75H14.35C14.9865 21.75 15.597 21.4947 16.0471 21.0403C16.4971 20.5859 16.75 19.9696 16.75 19.3269V12.0577C16.75 11.4151 16.4971 10.7987 16.0471 10.3443C15.597 9.8899 14.9865 9.63462 14.35 9.63462H3.15C2.51348 9.63462 1.90303 9.8899 1.45294 10.3443C1.00286 10.7987 0.75 11.4151 0.75 12.0577V19.3269C0.75 19.9696 1.00286 20.5859 1.45294 21.0403C1.90303 21.4947 2.51348 21.75 3.15 21.75Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></span>
+                </a>
+                </li>
+            {{else}}
+            <li class="navUser-item navUser-item--account">
+                <a class="navUser-action"
+                   href="{{urls.auth.login}}"
+                   aria-label="{{lang 'common.login'}}"
+                >
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.705 11.894C14.703 10.892 13.51 10.15 12.209 9.701C13.603 8.741 14.518 7.135 14.518 5.318C14.518 2.385 12.132 0 9.2 0C6.267 0 3.881 2.385 3.881 5.318C3.881 7.135 4.797 8.741 6.19 9.701C4.889 10.15 3.696 10.892 2.694 11.894C0.957 13.632 0 15.942 0 18.399H1.437C1.437 14.119 4.919 10.637 9.2 10.637C13.48 10.637 16.962 14.119 16.962 18.399H18.4C18.4 15.942 17.443 13.632 15.705 11.894ZM9.2 9.199C7.06 9.199 5.318 7.458 5.318 5.318C5.318 3.178 7.06 1.437 9.2 1.437C11.34 1.437 13.081 3.178 13.081 5.318C13.081 7.458 11.34 9.199 9.2 9.199Z" fill="black"/>
+</svg></span>
+                </a>
+                </li>
+            {{/if}}
+        </li>
+        <li class="navUser-item navUser-item--cart">
+            <a class="navUser-action"
+               data-cart-preview
+               data-dropdown="cart-preview-dropdown"
+               data-options="align:right"
+               href="{{urls.cart}}"
+               aria-label="{{lang 'cart.nav_aria_label'}}"
+            >
+               <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="28" viewBox="0 0 26 28" fill="none">
+  <path d="M6.77778 8.22222V6.77778C6.77778 3.5868 9.36458 1 12.5556 1C15.7465 1 18.3333 3.5868 18.3333 6.77778V8.22222M16.8889 16.8889V14M8.22222 16.8889V14M9.00001 27H16.1111C19.8823 27 21.768 27 22.9395 25.8284C24.1111 24.6569 24.1111 22.7712 24.1111 19V12.2222C24.1111 10.3366 24.1111 9.39379 23.5253 8.80801C22.9395 8.22222 21.9967 8.22222 20.1111 8.22222H5C3.11438 8.22222 2.17157 8.22222 1.58579 8.80801C1 9.39379 1 10.3366 1 12.2222V19C1 22.7712 1 24.6569 2.17157 25.8284C3.34315 27 5.22877 27 9.00001 27Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg></span>
+<span class="countPill cart-quantity"></span>
+            </a>
+
+            <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+            
+        </li>
+    </ul>
+    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" data-prevent-quick-search-close>
+        {{> components/common/quick-search name='nav-quick-search'}}
+    </div>
+</nav>

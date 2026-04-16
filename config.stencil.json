@@ -1,0 +1,11 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {}
+  },
+  "normalStoreUrl": "https://nomorewetspot.com/",
+  "port": "5085",
+  "packageManager": "npm"
+}

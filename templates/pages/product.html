@@ -1,0 +1,70 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{inject 'productId' product.id}}
+
+{{#partial "page"}}
+<style type="text/css">
+#main-content > .container{ max-width:100%; padding:0; }
+.footer{ margin-top:0; }
+</style>
+
+<div class="breadcrumb-product">
+  <div class="container">
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+  </div>
+</div>
+    <div class="container">
+    
+
+    {{#each product.shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+
+
+        {{> components/products/product-view}}
+        
+        
+        {{{region name="product_below_content"}}}
+        
+        </div>
+
+<article class="productView-description">
+  <div class="container">
+    {{#if theme_settings.show_product_details_tabs}}
+        {{> components/products/description-tabs}}
+    {{else}}
+        {{> components/products/description}}
+    {{/if}}
+  </div>
+</article>
+<div class="related-customer-viewed">
+  <div class="container">
+   {{> components/products/tabs}}
+  </div>
+</div>
+
+        <script>
+			$(document).ready(function(){
+			$(".productView-reviewLink a").click(function(e){
+				e.preventDefault();
+				console.log($('a[href="#tab-reviews"]'));
+		
+				$('a[href="#tab-reviews"]')[0].click();
+				$('html, body').stop().animate({ scrollTop: $(".productView-description").offset().top }, 1000);
+			});
+			});
+		</script>
+
+
+    {{> components/products/schema}}
+{{/partial}}
+{{> layout/base}}

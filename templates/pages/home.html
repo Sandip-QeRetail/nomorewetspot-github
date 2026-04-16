@@ -1,0 +1,319 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: 2
+---
+{{#partial "hero"}}
+    {{{region name="home_below_menu"}}}
+    {{#and carousel carousel.slides.length}}
+        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows play_pause_button=theme_settings.homepage_show_carousel_play_pause_button}}
+    {{/and}}
+    {{{region name="home_below_carousel"}}}
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+<style>
+    .header{ border-bottom:0; }
+    .heroCarousel{ display:none; }
+	.body .container { max-width: inherit;padding: 0;}
+	.body .container .container { max-width: 1630px;padding: 0 15px;}
+	.footer { padding:0; margin-top: 0; }
+</style>
+
+<div class="main full">
+<div class="header-banner">
+  <a href="/brands/NoMoreWetSpot.html"><img src="{{cdn '/assets/img/banner01.jpg'}}" alt="" title="" /></a>
+</div>
+
+<div class="usp-home">
+  <h2><span>The unique bonding process</span> Brings together a soft luxurious feel with rugged durability and easy washability. </h2>
+  <div class="container">
+  
+    <div class="usp-box">
+      <div><img src="{{cdn '/assets/img/usp-icon1.gif'}}" alt="Flat shipping rates" title="Flat shipping rates" /></div>
+      <p>Flat shipping <br />rates</p>
+    </div>
+    
+    <div class="usp-box">
+      <div><img src="{{cdn '/assets/img/usp-icon2.gif'}}" alt="Soft and luxurious" title="Soft and luxurious" /></div>
+      <p>Soft and <br />luxurious</p>
+    </div>
+    
+    <div class="usp-box">
+      <div><img src="{{cdn '/assets/img/usp-icon3.gif'}}" alt="Ships from Canada" title="Ships from Canada" /></div>
+      <p>Ships <br />from Canada</p>
+    </div>
+    
+    <div class="usp-box">
+      <div><img src="{{cdn '/assets/img/usp-icon4.gif'}}" alt="Fast order fulfillment" title="Fast order fulfillment" /></div>
+      <p>Fast order <br />fulfillment</p>
+    </div>
+    
+    <div class="usp-box">
+      <div><img src="{{cdn '/assets/img/usp-icon5.gif'}}" alt="Great customer service" title="Great customer service" /></div>
+      <p>Great customer <br />service</p>
+    </div>
+    
+    <div class="usp-box">
+      <div><img src="{{cdn '/assets/img/usp-icon6.gif'}}" alt="Solid product warranty" title="Solid product warranty" /></div>
+      <p>Solid product <br />warranty</p>
+    </div>
+    
+  </div>
+</div>
+
+<div class="categories-home">
+  <div class="container">
+    
+    <div class="category-inner waterproof-blankets-category">
+      <div class="category-box-content">
+        <div class="category-box-content-inner">
+        <h2>The Waterproof Blankets</h2>
+        <p>Whether your trying to keep something dry, or trying to protect yourself from something, this is the solution!</p>
+        <a href="/the-waterproof-blankets/" class="button-round">Shop Now</a>
+        </div>
+      </div>  
+      <div class="category-box-img">
+        <img src="{{cdn '/assets/img/waterproof-blankets-category-img.jpg'}}" alt="The Waterproof Blankets" title="The Waterproof Blankets" />
+      </div>
+    </div>
+    <div class="category-inner toys-category">
+      <div class="category-box-content">
+        <div class="category-box-content-inner">
+        <h2>Toys</h2>
+        <p>Here are a few of our favorite g-spot toys! Double Gpop, Romance suction toy, Nuru</p>
+        <a href="/toys/" class="button-round">Shop Now</a>
+        </div>
+      </div>  
+      <div class="category-box-img">
+        <img src="{{cdn '/assets/img/toys-category-img.jpg'}}" alt="Toys" title="Toys" />
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="new-products-slider">
+  <div class="container">
+     <div class="new-products-slider-container">
+      {{#if products.new}}
+          {{> components/products/new products=products.new columns=3}}
+      {{/if}}
+      {{{region name="home_below_new_products"}}}
+     </div> 
+  </div>
+</div>
+
+<div class="review-slider-home">
+  <div class="container">
+  <h2>Customer Reviews</h2>
+    <section class="review-carousel"
+     data-slick='{
+          "dots": false,
+          "infinite": true,
+          "centerMode": true,
+          "slidesToShow": 1,
+          "mobileFirst": true,
+          "slidesToScroll": 1,
+          "responsive": [
+              {
+                  "breakpoint": 1400,
+                  "settings": {
+                      "slidesToScroll": 1,
+                      "slidesToShow": 3
+                  }
+              },
+              {
+                  "breakpoint": 767,
+                  "settings": {
+                      "slidesToScroll": 1,
+                      "slidesToShow": 2
+                  }
+              },
+              {
+                  "breakpoint": 550,
+                  "settings": {
+                      "slidesToScroll": 1,
+                      "slidesToShow": 1
+                  } 
+              }
+          ]
+      }'
+  > 
+      <div class="review-box">
+    <img src="{{cdn '/assets/img/review-5star.png'}}" alt="" title="" />
+    <p class="review-text">Nothing like this out there!!</p>
+    <h4>Mini 30" X 36" Single pack, <br />Waterproof Fleece Blanket</h4>
+    <p>so soft. washes like a dream. and the 30x36" size is perfect for taking to the club. it's now a staple in our swinger...</p>
+  </div>
+  
+  <div class="review-box">
+    <img src="{{cdn '/assets/img/review-5star.png'}}" alt="" title="" />
+    <p class="review-text">My new favorite blanket!!!!!</p>
+    <h4>Regular size NMWS blanket</h4>
+    <p>Hi! I ordered one of your blankets a month ago and I just wanted to tell you how excited my husband...</p>
+  </div>
+  
+  <div class="review-box">
+    <img src="{{cdn '/assets/img/review-5star.png'}}" alt="" title="" />
+    <p class="review-text">Nothing like this out there!!</p>
+    <h4>The "Double G" pop</h4>
+    <p>When hubby first brought this home, I was like " hell no " Lol. But after the first try I was hooked...</p>
+  </div>
+  
+  <div class="review-box">
+    <img src="{{cdn '/assets/img/review-5star.png'}}" alt="" title="" />
+    <p class="review-text">exactly what it says!</p>
+    <h4>The Jumbo Fleece</h4>
+    <p>We bought the jumbo blanket after trying it else where. It fits right across the bed, doesn’t bunch up and fully...</p>
+  </div>
+  <div class="review-box">
+    <img src="{{cdn '/assets/img/review-5star.png'}}" alt="" title="" />
+    <p class="review-text">best ever blanket</p>
+    <h4>50" X 60" Two Color, Reversible Waterproof Fleece Blankets,Three color choices!</h4>
+    <p>I. Absolutely love this product and would highly recommend it to anyone who would like to save their beds or other services from getting wet...</p>
+  </div>
+  <div class="review-box">
+    <img src="{{cdn '/assets/img/review-5star.png'}}" alt="" title="" />
+    <p class="review-text">Works like Magic!</p>
+    <h4>The Jumbo Fleece</h4>
+    <p>Finally! My girl no longer worries about making a mess and has just been able to let it all go. This is an amazing product and may well be worth it's weight in gold.</p>
+  </div>                                  
+</section>
+  
+
+  </div>
+</div>
+
+<div class="locations-home">
+  <div class="container">
+    <div class="locations-inner">
+       <h2><svg xmlns="http://www.w3.org/2000/svg" width="30" height="35" viewBox="0 0 30 35" fill="none">
+  <path d="M28.5 14.5031C28.5 18.8946 23.4518 25.5561 19.5294 30.0692C17.5416 32.3564 16.5477 33.5 15 33.5C13.4523 33.5 12.4584 32.3564 10.4706 30.0692C6.5482 25.5561 1.5 18.8946 1.5 14.5031C1.5 7.32168 7.54416 1.5 15 1.5C22.4558 1.5 28.5 7.32168 28.5 14.5031Z" stroke="#0B5EAB" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20.0625 14.8746C20.0625 17.6446 17.7959 19.8901 15 19.8901C12.2041 19.8901 9.9375 17.6446 9.9375 14.8746C9.9375 12.1046 12.2041 9.85913 15 9.85913C17.7959 9.85913 20.0625 12.1046 20.0625 14.8746Z" stroke="#0B5EAB" stroke-width="3" stroke-linecap="round"/>
+</svg> <span>Our blankets are available at the following locations!</span></h2>
+       <!-- Elfsight Google Maps | NMWS locations -->
+		<script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-3ea3281b-1f59-4c4c-955a-331a3a2d9c5f" data-elfsight-app-lazy></div>
+    </div>
+  </div>
+</div>
+
+<div class="faq-blog-home">
+  <div class="container">
+  
+    <div class="faqs-home">
+      <h3 class="faq-blog-title"><strong>FAQ</strong>  <a href="/faq/" class="blog-button-round"><span>View All</span></a></h3>
+      
+<div class="accordion">
+  <div class="at-item">
+    <div class="at-title" style="border:0;">
+      <h2>What's so special about your blanket?</h2>
+    </div>
+    <div class="at-tab">
+      We hear, "oh, we just use a towel" a lot when we are doing our trade shows. This is better than a towel because it's waterproof , and larger. If your putting the towel down after the sex to soak up the wetspot, then your laying on a bumpy, lumpy towel in your bed, that is going to eventually soak through to you or get moved off of the wetspot. That doesn't even begin to cover the damage to the mattress. Even if you have a mattress pad, you have to strip and wash all that bedding. If you make wetspots during sex, you know what's cumming! Just grab this compact bundle from your nightstand and throw it down first. It takes less time than putting on a condom! Also, we've been around since 2012, when I first came up with the idea for this product!
+    </div>
+  </div>
+  <div class="at-item">
+    <div class="at-title active">
+      <h2>Is this a sheet that goes on the bed?</h2>
+    </div>
+    <div class="at-tab" style="display: block;">
+      This is a "throw" that you put down on any surface before you play. When your done, simply gather it up and set the "wetspot" off to the side and enjoy your dry surface (bed, sofa, car seat, rug)
+    </div>
+  </div>
+  <div class="at-item">
+    <div class="at-title">
+      <h2>How big is it?</h2>
+    </div>
+    <div class="at-tab">
+      Well, that's an awfully personal question!! Oh... The NoMoreWetSpot mini blanket is roughly 30 inches by 36 inches, the small is 36" by 40", the regular, 50 inches by 60 inches. The queen size is 5' X 7'! It covers a queen sized mattress, the King is 7' by 7'! The Luscious Linens line has the smaller size approx. 36" by 42" and the larger size is approx. 50" by 60
+    </div>
+  </div>
+  <div class="at-item">
+    <div class="at-title">
+      <h2>Washing Instructions. If it's waterproof, how do I wash and care for it??</h2>
+    </div>
+    <div class="at-tab">
+      The fleece is bonded to a waterproof membrane, It's not a coating that will wear out. The fleece still gets wet, so it can be washed, but the fluid never goes through! Our blanket is 100% polyester fleece and is machine washable and dry-able. Be sure to follow the washtag instructions (sewn onto the blanket). Machine wash on regular, tumble dry on low heat or hang to dry. That being said, it is light enough, you will find that it will air dry quite quickly! You can also hang it over the door or a chair. (Especially handy when your on vacation or camping!). In a front load machine, wash it with the wet side out. You may also find it beneficial to add a couple of tablespoons of baking soda, or a cup of vinegar, on occasion to control odor.
+    </div>
+  </div>
+  <div class="at-item">
+    <div class="at-title">
+      <h2>How do you ship?</h2>
+    </div>
+    <div class="at-tab">
+      First of all, let us assure you that your order is handled with the utmost discretion! The orders are shipped from Alberta, Canada, via Courier and Canada Post, and are wrapped in plain brown paper or shipped in a white poly bag. Also, the "From" address is simply marked as NMWS or ThatBlanketGuy not NoMoreWetSpot. The buyer is liable for any brokerage fees, tariffs and/or duties, payable to or collected by the delivery company, in accordance to the "country of imports" laws and regulations. We are covering all import costs to the USA though. All goods on the site are shipped from Canada. All goods on the site, are manufactured in China, with the exception of the Double G-Pop, the Double U-Pop and Nuru Gel Powder, which are assembled in Canada. (Labeled as "Canadian Made")
+    </div>
+  </div>
+</div>
+      
+      <script type="text/javascript">
+	  $(document).ready(function () {
+		  $(".at-title").click(function () {
+			$(this)
+			  .toggleClass("active")
+			  .next(".at-tab")
+			  .slideToggle()
+			  .parent()
+			  .siblings()
+			  .find(".at-tab")
+			  .slideUp()
+			  .prev()
+			  .removeClass("active");
+		  });
+		});
+
+	  </script>
+    </div>
+    <div class="blogs-home">
+     <h3 class="faq-blog-title"><strong>Blog</strong> <a href="/blog/" class="blog-button-round"><span>View All</span></a></h3>
+      <div class="blogRow">
+           {{#each blog.recent_posts}}
+                <div class="blogBox">                  
+                   <div class="blogDetail">
+                   <div class="blog-date">{{date_published}}</div>
+                      <h2 class="blog-title">
+                          <a href="{{url}}">{{title}}</a>
+                      </h2>
+                      <a href="{{url}}" class="blog-button-round"><span>Read More</span></a>
+                  </div>
+               </div>
+           {{/each}}
+        </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="about-us-home">
+  <div class="about-us-left-image">
+    <img src="{{cdn '/assets/img/about-us-lady.jpg'}}" alt="" title="" />
+  </div>
+  <div class="about-us-content">
+    <h2>About Us</h2>
+    <p>Now, No one has to sleep on the WetSpot!! Our waterproof blanket is made with “cool-dry” fleece. The unique bonding process brings together a soft luxurious feel with rugged durability and easy washability.</p>
+    <p>Our blankets are 50"' X 60". They are waterproof from either side. Throw it down to before you have sex, and keep your play surface clean and dry. Or throw it down to protect you from the surfaces your playing on (you've seen what that blue light shows you in hotel rooms on CSI)! When your done, remove it, and whatever, or wherever, you were playing is clean and dry.</p>
+    <div class="card-shop-button"><a href="#"><span class="card-shop-round">Read More</span></a></div>
+  </div>
+  <div class="about-us-image">
+    <img src="{{cdn '/assets/img/about-us-image.jpg'}}" alt="" title="" />
+  </div>    
+</div>
+
+
+</div>
+{{/partial}}
+{{> layout/base}}

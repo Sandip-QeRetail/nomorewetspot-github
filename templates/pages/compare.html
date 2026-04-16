@@ -1,0 +1,185 @@
+{{#partial "page"}}
+{{inject 'comparisons' comparisons}}
+{{inject 'compareRemoveMessage' (lang 'compare.no_remove')}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<h1 class="page-heading">{{lang 'compare.header' products=comparisons.length}}</h1>
+<main class="page">
+<div class="page-content">
+
+<style type="text/css">
+.compare-page-main{ padding-top:70px; }
+.compareTable-item .compareTable-heading{ display:block; width:100%; font-family: "Archivo", sans-serif; text-align: left; padding: 0 0 7px; border-bottom: solid 1px #ddd; margin: 0 0 8px; font-size: 16px; font-weight: 700; }
+.compare-product-box{ padding:0 10px; }
+.compareTable-item{ padding:0 10px 15px; }
+.compare-product-box .compareTable-action { padding: 15px 10px 15px; }
+.compare-product-box .compareTable-action .button { margin:0; }
+.compare-page-main .slick-arrow{ top:-45px; left:0; right:0; margin: 0 auto; width:40px; height:40px; }
+.compare-page-main .slick-arrow.slick-prev{ left:-50px; }
+.compare-page-main .slick-arrow.slick-next{ right:-50px; }
+.compare-page-main .slick-next::before, .compare-page-main .slick-prev::before{ background-size:100%; width:40px; height:40px;  }
+.compareTable-removeProduct{ right: 5px; top: 5px;  width: 25px; height: 25px; }
+.compareTable-removeProduct .icon { height: 25px; margin-top: 0; width: 25px; padding: 5px; }
+</style>
+
+<div class="compare-page-main">
+<div class="compare-product-slider"
+     data-slick='{
+          "dots": false,
+          "infinite": false,
+          "mobileFirst": true,
+          "autoplay": true,
+          "slidesToShow": 1,
+          "slidesToScroll":1,
+          "responsive": [
+              {
+                  "breakpoint": 1300,
+                  "settings": {
+                      "slidesToScroll": 1,
+                      "slidesToShow": 4
+                  }
+              },
+              {
+                  "breakpoint": 1000,
+                  "settings": {
+                      "slidesToScroll": 1,
+                      "slidesToShow": 3
+                  }
+              },
+              {
+                  "breakpoint": 767,
+                  "settings": {
+                      "slidesToScroll": 1,
+                      "slidesToShow": 3
+                  }
+              },
+              {
+                  "breakpoint": 500,
+                  "settings": {
+                      "slidesToScroll": 2,
+                      "slidesToShow": 2
+                  }
+              }
+          ]
+      }'
+  >
+{{#each comparisons}}
+
+<div class="compare-product-box">
+
+ <article class="card">
+      <figure class="card-figure">
+          <a class="card-figure__link" aria-label="{{name}}" href="{{url}}" data-event-type="product-click">
+              <div class="card-img-container">
+                  {{> components/common/responsive-img
+                      image=image
+                      class="card-image"
+                      fallback_size=../theme_settings.product_size
+                      lazyload=../theme_settings.lazyload_mode
+                      default_image=../theme_settings.default_image_product
+                  }}
+              </div>
+          </a>
+          <a class="compareTable-removeProduct" data-comparison-remove href="{{#if remove_url}}{{remove_url}}{{else}}#{{/if}}">
+              <svg class="icon">
+                  <use href="#icon-close"></use>
+              </svg>
+          </a>
+      </figure>
+      <div class="card-body">
+          {{#if brand.name}}
+              <p class="card-text"><a href="{{brand.url}}">{{ brand.name }}</a></p>
+          {{/if}}
+          <h3 class="card-title">
+              <a href="{{url}}">{{ name }}</a>
+          </h3>
+          {{#or ../customer (unless ../settings.hide_price_from_guests)}}
+              {{#if price_range}}
+                  {{> components/products/price-range}}
+              {{else}}
+                  {{> components/products/price price=price}}
+              {{/if}}
+          {{else}}
+              {{> components/common/login-for-pricing}}
+          {{/or}}
+      </div>
+  </article>
+<div class="compareTable-action">
+        {{#if show_cart_action}}
+            {{#if has_options}}
+                <a href="{{url}}" data-event-type="product-click" class="button button--primary" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a>
+            {{/if}}
+            {{#if pre_order}}
+                <a href="{{url}}" data-event-type="product-click" class="button button--primary" data-product-id="{{id}}">
+                    {{lang 'products.pre_order'}}
+                </a>
+            {{/if}}
+            {{#if add_to_cart_url}}
+                <a href="{{add_to_cart_url}}" data-event-type="product-click" class="button button--primary" data-product-id="{{id}}">
+                    {{lang 'products.add_to_cart'}}
+                </a>
+            {{/if}}
+            {{#if out_of_stock_message}}
+                <a href="{{url}}" class="button button--primary" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+            {{/if}}
+        {{/if}}
+    </div>
+    
+
+  <div class="compareTable-item">
+  <span class="compareTable-heading">{{lang 'products.description'}}</span>
+  {{{ summary }}}
+  
+  </div>
+  
+  {{#if settings.show_product_rating}}
+    <div class="compareTable-row">
+        <div class="compareTable-heading">
+            <span class="compareTable-heading">{{lang 'products.reviews.rating_label'}}</span>
+        </div>
+        {{#each comparisons}}
+        <div class="compareTable-item">
+            {{#if rating}}
+                {{> components/products/ratings rating=rating}}
+            {{else}}
+                {{lang 'products.reviews.no_reviews'}}
+        {{/if}}
+        </div>
+        {{/each}}
+    </div>
+{{/if}}
+
+
+<div class="compareTable-item">
+<span class="compareTable-heading">{{lang 'products.availability'}}</span>
+    {{#if availability}}
+        {{ availability }}
+    {{else}}
+        {{lang 'common.not_applicable'}}
+    {{/if}}
+</div>
+
+<div class="compareTable-item">
+<span class="compareTable-heading">{{lang 'common.other_details'}}</span>
+        {{#if custom_fields}}
+            <ul>
+                {{#each custom_fields}}
+                    <li>{{name}}: {{{value}}}</li>
+                {{/each}}
+            </ul>
+        {{else}}
+            {{lang 'common.not_applicable'}}
+        {{/if}}
+    </div>
+
+</div>
+
+{{/each}}
+</div>
+
+  </div>
+</div>
+</main>
+
+{{/partial}}
+{{> layout/base}}
+

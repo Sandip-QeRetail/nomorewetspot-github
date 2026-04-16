@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ resourceHints }}}
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        <link href="{{{ head.favicon }}}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script nonce="{{nonce}}">
+            {{!-- Change document class from no-js to js so we can detect this in css --}}
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
+
+        {{> components/common/polyfill-script }}
+        <script nonce="{{nonce}}">window.consentManagerTranslations = `{{{langJson 'consent_manager'}}}`;</script>
+
+        {{!-- Load Lazysizes script ASAP so images will appear --}}
+        <script nonce="{{nonce}}">
+            {{!-- Only load visible elements until the onload event fires, after which preload nearby elements. --}}
+            window.lazySizesConfig = window.lazySizesConfig || {};
+            window.lazySizesConfig.loadMode = 1;
+        </script>
+        <script nonce="{{nonce}}" async src="{{cdn 'assets/dist/theme-bundle.head_async.js' resourceHint='preload' as='script'}}"></script>
+        
+        {{getFontsCollection font-display='block'}}
+        
+        <script nonce="{{nonce}}" async src="{{cdn 'assets/dist/theme-bundle.font.js' resourceHint='preload' as='script'}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        {{{stylesheet '/assets/css/theme.css'}}}
+
+        {{{head.scripts}}}
+
+        {{~inject 'zoomSize' theme_settings.zoom_size}}
+        {{~inject 'productSize' theme_settings.product_size}}
+        {{~inject 'genericError' (lang 'common.generic_error')}}
+        {{~inject 'urls' urls}}
+        {{~inject 'secureBaseUrl' settings.secure_base_url}}
+        {{~inject 'cartId' cart_id}}
+        {{~inject 'template' template}}
+        {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
+        {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}}
+        {{~inject 'validationDefaultDictionaryJSON' (langJson 'validation_default_messages')}}
+        {{~inject 'carouselArrowAndDotAriaLabel' (lang 'carousel.arrow_and_dot_aria_label')}}
+        {{~inject 'carouselActiveDotAriaLabel' (lang 'carousel.active_dot_aria_label')}}
+        {{~inject 'carouselContentAnnounceMessage' (lang 'carousel.content_announce_message')}}
+        {{~inject 'giftWrappingRemoveMessage' (lang 'cart.gift_wrapping.remove_confirm')}}
+        
+        <link href="{{cdn '/assets/scss/custom.css'}}" rel="stylesheet">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-36289160-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    </head>
+    <body>
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        {{> components/common/footer }}
+
+        <script nonce="{{nonce}}">window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+        <script nonce="{{nonce}}">
+            {{!-- Exported in app.js --}}
+            function onThemeBundleMain() {
+                window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+
+                function browserSupportsFormData() {
+                    return typeof FormData !== 'undefined' 
+                        && !!FormData.prototype.keys;
+                }
+                function loadFormDataPolyfillScript(src) {
+                    var formDataPolyfillScript = document.createElement('script');
+                    formDataPolyfillScript.src = src;
+                    formDataPolyfillScript.onerror = function () {
+                        console.error('Failed to load formData polyfill script ' + src);
+                    };
+                    document.body.appendChild(formDataPolyfillScript);
+                }
+
+                if (!browserSupportsFormData()) {
+                    loadFormDataPolyfillScript('{{cdn 'assets/dist/theme-bundle.polyfill_form_data.js'}}');
+                }
+            }
+        </script>
+        <script id="theme-bundle-main" nonce="{{nonce}}" async defer src="{{cdn 'assets/dist/theme-bundle.main.js' resourceHint='preload' as='script'}}"></script>
+        <script nonce="{{nonce}}">
+            const scriptElement = document.getElementById('theme-bundle-main');
+
+            if (scriptElement) {
+                if (typeof window.stencilBootstrap === 'function') {
+                    onThemeBundleMain();
+                } else {
+                    scriptElement.addEventListener('load', onThemeBundleMain, { once: true });
+                }
+            } else {
+                console.error('Could not find script element with id "theme-bundle-main"');
+            }
+        </script>
+
+        {{{footer.scripts}}}
+        <script>
+		var url_string = window.location.href+"";
+		var url = new URL(url_string);
+		var c = url.searchParams.get("revpage");
+		if(c != "" && c != undefined){
+			$(".tab").each(function(){
+				if($(this).find("a").attr("href") == "#tab-reviews"){
+					$(this).find("a").click();
+					$(".tabs").find(".is-active").removeClass("is-active");
+					$(this).addClass("is-active");
+					$(".tabs-contents").find(".is-active").removeClass("is-active");
+					$("#tab-reviews").addClass("is-active");
+					$('html, body').stop().animate({ scrollTop: $(".tabs").offset().top }, 1000);	
+				}
+			});
+		}
+		</script>
+    </body>
+</html>

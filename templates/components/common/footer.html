@@ -1,0 +1,117 @@
+
+<footer class="footer" role="contentinfo">
+<div class="footer-marquee marquee">
+<div class="marquee-line">good for all of life's little messes! Estab 2012</div> 
+<div class="marquee-line">good for all of life's little messes! Estab 2012</div> 
+<div class="marquee-line">good for all of life's little messes! Estab 2012</div> 
+<div class="marquee-line">good for all of life's little messes! Estab 2012</div>   
+</div>
+
+<div class="footer-inner">
+    <section class="footer-info">
+            <article class="footer-info-col footer-info-col--small footer-categories" data-section-type="footer-categories">
+                <h3 class="footer-info-heading">{{lang 'footer.categories'}}</h3>
+                <ul class="footer-info-list">
+                    {{#each categories}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                    <li>
+                        <a href="/categories/" class="view-all-link">View All</a>
+                    </li>
+                </ul>
+                <div class="sslLogo">
+                	<a href="https://www.positivessl.com/" target="_blank"><img src="{{cdn '/assets/img/positive-ssl-logo.png'}}"></a>
+                </div>
+            </article>
+            
+            <article class="footer-info-col footer-info-col--small footer-navigation" data-section-type="footer-webPages">
+                <h3 class="footer-info-heading">Quick Links</h3>
+                <ul class="footer-info-list">
+                    <li>
+                            <a href="/">Home</a>
+                        </li>
+                    {{#each pages}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                    <li>
+                        <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
+                    </li>
+                </ul>
+            </article>
+
+            {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+            <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
+                <h3 class="footer-info-heading">Brands</h3>
+                <ul class="footer-info-list">
+                    {{#each shop_by_brand}}
+                        <li>
+                            <a href="{{url}}">{{name}}</a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </article>
+            {{/and}}
+
+            <article class="footer-info-col ftrNewsletter" data-section-type="newsletterSubscription">
+                {{#if settings.show_newsletter_box}}
+                    {{> components/common/subscription-form}}
+                {{/if}}
+                {{> components/common/social-links}}
+            </article>
+            
+        </section>
+</div>
+
+<div class="customer-support-main">
+  <div class="customer-support-title">
+    <h2>Customer Support</h2>
+    <p>Quick help, friendly support — anytime you need it.</p>
+  </div>
+  <ul>
+    <li>
+     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="36" viewBox="0 0 30 36" fill="none">
+  <g opacity="0.4">
+    <path d="M28.9 14.7157C28.9 19.3816 23.6648 26.4595 19.5972 31.2547C17.5357 33.6848 16.505 34.8999 14.9 34.8999C13.295 34.8999 12.2643 33.6848 10.2028 31.2547C6.13517 26.4595 0.899994 19.3816 0.899994 14.7157C0.899994 7.08544 7.16801 0.899902 14.9 0.899902C22.632 0.899902 28.9 7.08544 28.9 14.7157Z" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M20.15 15.1104C20.15 18.0535 17.7995 20.4394 14.9 20.4394C12.0005 20.4394 9.64999 18.0535 9.64999 15.1104C9.64999 12.1673 12.0005 9.78147 14.9 9.78147C17.7995 9.78147 20.15 12.1673 20.15 15.1104Z" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+</svg>
+     <p>PO Box 3556, Wainwright <br />
+Alberta T9W1T5, Canada</p>
+    </li>
+    <li>
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="28" viewBox="0 0 36 28" fill="none">
+  <path opacity="0.4" d="M35 4.9V23.1C35 24.1343 34.5867 25.1263 33.851 25.8577C33.1152 26.5891 32.1174 27 31.0769 27H4.92308C3.88261 27 2.88476 26.5891 2.14904 25.8577C1.41332 25.1263 1 24.1343 1 23.1V4.9M35 4.9C35 3.86566 34.5867 2.87368 33.851 2.14228C33.1152 1.41089 32.1174 1 31.0769 1H4.92308C3.88261 1 2.88476 1.41089 2.14904 2.14228C1.41332 2.87368 1 3.86566 1 4.9M35 4.9V5.3212C35.0001 5.98705 34.8287 6.64184 34.5021 7.22318C34.1755 7.80452 33.7047 8.29306 33.1344 8.64227L20.0574 16.6416C19.4388 17.0204 18.7265 17.221 18 17.221C17.2735 17.221 16.5612 17.0204 15.9426 16.6416L2.86564 8.644C2.29535 8.2948 1.82449 7.80626 1.49792 7.22491C1.17134 6.64357 0.999926 5.98879 1 5.32293V4.9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+      <a href="mailto:info@nomorewetspot.com">info@nomorewetspot.com</a>
+    </li>
+    <li>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+  <path opacity="0.38" d="M18.7219 8.77587V3.76988C18.7219 3.43796 18.8538 3.11963 19.0885 2.88493C19.3231 2.65023 19.6414 2.51838 19.9733 2.51838C20.3052 2.51838 20.6235 2.65023 20.8582 2.88493C21.0929 3.11963 21.2247 3.43796 21.2247 3.76988V7.03754C22.0131 6.24409 27.1076 1.12296 27.8485 0.382068C27.9639 0.262537 28.102 0.167195 28.2547 0.101605C28.4073 0.0360154 28.5716 0.00149125 28.7377 4.72525e-05C28.9039 -0.00139675 29.0687 0.0302683 29.2225 0.0931948C29.3763 0.156121 29.516 0.249049 29.6335 0.366556C29.751 0.484062 29.8439 0.623794 29.9068 0.777599C29.9697 0.931404 30.0014 1.0962 30 1.26237C29.9985 1.42855 29.964 1.59277 29.8984 1.74546C29.8328 1.89814 29.7375 2.03624 29.618 2.15169C28.8771 2.89257 23.8089 7.98993 23.0255 8.77587H26.2304C26.5623 8.77587 26.8806 8.90772 27.1153 9.14243C27.35 9.37713 27.4818 9.69545 27.4818 10.0274C27.4818 10.3593 27.35 10.6776 27.1153 10.9123C26.8806 11.147 26.5623 11.2789 26.2304 11.2789H21.2247C20.561 11.2789 19.9244 11.0152 19.455 10.5458C18.9856 10.0764 18.7219 9.43971 18.7219 8.77587ZM28.8521 20.9642C29.5773 21.6915 29.9846 22.6767 29.9846 23.7037C29.9846 24.7308 29.5773 25.716 28.8521 26.4433L27.7108 27.7574C17.4605 37.5666 -7.47762 12.6342 2.18202 2.35193L3.62115 1.10043C4.34901 0.395266 5.32523 0.00503987 6.33858 0.0141741C7.35194 0.0233083 8.32096 0.431068 9.036 1.14924C9.0748 1.18678 11.3924 4.20039 11.3924 4.20039C12.0781 4.92444 12.4596 5.88413 12.4582 6.88135C12.4568 7.87857 12.0726 8.83719 11.3849 9.55931L9.93577 11.3815C10.7379 13.3301 11.9171 15.1011 13.4055 16.5926C14.894 18.0842 16.6624 19.267 18.6093 20.0731L20.4426 18.6152C21.1632 17.9256 22.1218 17.5401 23.1191 17.5387C24.1165 17.5373 25.0761 17.9201 25.7987 18.6076C25.7987 18.6076 28.8133 20.9267 28.8521 20.9642ZM27.1314 22.7839C27.1314 22.7839 24.1368 20.4786 24.098 20.4411C23.8402 20.1854 23.4918 20.042 23.1288 20.042C22.7657 20.042 22.4174 20.1854 22.1595 20.4411C22.1258 20.4736 19.6017 22.486 19.6017 22.486C19.4316 22.6214 19.2291 22.7102 19.0143 22.7435C18.7995 22.7769 18.5797 22.7537 18.3765 22.6763C15.853 21.7373 13.5608 20.2667 11.6553 18.3641C9.74988 16.4616 8.27573 14.1716 7.33283 11.6493C7.24924 11.4434 7.22198 11.2189 7.25387 10.999C7.28576 10.779 7.37565 10.5715 7.51429 10.3978C7.51429 10.3978 9.52656 7.87729 9.56034 7.84476C9.81597 7.58693 9.95939 7.23855 9.95939 6.87547C9.95939 6.51239 9.81597 6.16401 9.56034 5.90618C9.5228 5.86864 7.2177 2.8713 7.2177 2.8713C6.95603 2.63665 6.61453 2.51099 6.26319 2.52006C5.91184 2.52914 5.57728 2.67226 5.32807 2.92011L3.88895 4.17161C-3.17151 12.6605 18.4429 33.0775 25.88 26.0516L27.0213 24.7362C27.2904 24.4893 27.4524 24.1471 27.473 23.7824C27.4936 23.4178 27.371 23.0595 27.1314 22.7839Z" fill="black"/>
+</svg>
+      <a href="tel:8553456697">855-345-6697</a>
+    </li>
+    <li>
+      <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37" fill="none">
+  <path opacity="0.38" d="M18.5 0.25L18.9707 0.256836C28.8265 0.518893 36.7372 8.58361 36.75 18.5C36.75 28.579 28.5787 36.75 18.499 36.75C8.42051 36.7497 0.25 28.5788 0.25 18.5C0.25 8.42116 8.42051 0.25026 18.499 0.25H18.5ZM19.5215 5.24902C19.5215 5.81296 19.0644 6.27148 18.499 6.27148C17.9347 6.27122 17.4785 5.81259 17.4785 5.24902V2.34863C9.34976 2.86678 2.866 9.34865 2.34766 17.4775H5.24902C5.8139 17.4776 6.27246 17.9357 6.27246 18.5C6.27246 19.0655 5.81369 19.5224 5.24902 19.5225H2.34766C2.866 27.6513 9.34979 34.1322 17.4785 34.6504V31.751C17.4785 31.1874 17.9347 30.7288 18.499 30.7285C19.0644 30.7285 19.5215 31.187 19.5215 31.751V34.6514C27.6532 34.137 34.1408 27.6543 34.6592 19.5225H31.751C31.1859 19.5224 30.7285 19.0651 30.7285 18.5C30.7285 17.9361 31.1857 17.4776 31.751 17.4775H34.6523C34.134 9.34866 27.6502 2.86678 19.5215 2.34863V5.24902ZM18.499 9.37012C19.0639 9.37012 19.5215 9.82725 19.5215 10.3916V18.0801L26.8242 25.5059L26.8252 25.5068C27.2198 25.9109 27.2135 26.5584 26.8096 26.9531C26.4053 27.3479 25.7588 27.3412 25.3633 26.9365L17.7734 19.2158V19.2148C17.5856 19.0249 17.4785 18.7694 17.4785 18.5V10.3916C17.4785 9.82762 17.9351 9.37038 18.499 9.37012Z" fill="black" stroke="black" stroke-width="0.5"/>
+</svg>
+      <p>Monday to Friday:<br />8am - 4pm PST or 11am - 7pm EST</p>
+    </li>        
+  </ul>
+</div>
+
+<div class="copyright-main">
+<div class="copyright-left">
+  <p class="powered-by">&copy; {{moment format="YYYY"}} <strong>{{settings.store_name}}</strong>, All rights reserved. </p> <span class="bull"> | </span>
+  <p><a href="https://www.qeretail.com/services/ecommerce-website-development" target="_blank">Custom Bigcommerce Stencil Theme</a> - <strong>QeRetail</strong></p>
+ </div>
+<div class="copyright-right">
+  <img src="{{cdn '/assets/img/payment-icons.png'}}" alt="" title="" />
+</div>
+</div>
+</footer>
+    {{{region name="ssl_site_seal--global"}}}
+</footer>
